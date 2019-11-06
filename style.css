@@ -1,10 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Limelight|Montserrat&display=swap');
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
+
+/*****  REUSABLE CSS  *****/
+#hero, #testimonials, #whatRebozo{
+  max-height:calc(100vh - 80px);
+}
+#hero, #testimonials, #howTo{
+  margin:4em 5em;
+}
+#whatRebozo, #whyRebozo{
+  margin:4em 15em;
+}
+
+h1, h2, h3{
+  text-align: center;
+    font-family: 'Limelight', cursive;
+}
+p, div, span, a{
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+}
 img{
   width:100%;
+}
+
+button{
+  background-color: #CAE8DC;
 }
 /*****   MENU    *****/
 header {
@@ -27,10 +52,14 @@ header {
   grid-template-columns: repeat(6, 1fr);
   font-size: 1.2em;
  }
-  a,
- a:visited, a:active{
-   color:black;
-   text-decoration: none;
+ a,
+  a:visited, a:active{
+    color:black;
+    text-decoration: none;
+  }
+ .deskmenu a, .hiddenMenu a{
+     color:#F4DCE3;
+     font-weight: bold;
  }
 
  .logo{
@@ -98,25 +127,33 @@ svg.menuIcon {
 /*****  FOOTER  *****/
 footer{
   text-align: center;
+  background-image: url(images/rebozo_many.jpg);
+  background-repeat:no-repeat;
   padding:2em;
+  background-size:cover;
+}
+footer div{
+  background:rgba(250,250,250, .8);
+  margin:auto;
+  padding:2em 0;
+  width:40vw;
 }
 footer p{
   margin: .5em 0;
+  text-align: center;
 }
 footer p:last-child{
-  margin-top:1em;
+  margin-top:2em;
 }
-/*****  REUSABLE CSS  *****/
-#hero, #testimonials{
-  max-height:calc(100vh - 80px);
-}
+
 
 /****   HERO   *****/
 #hero{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr .5fr 1fr;
-  margin:80px 2em 2em;
+  grid-template-rows: .5fr .5fr .5fr;
+  margin-top:80px;
+  padding-top:1em;
   position: relative;
   z-index: 1;
   justify-content: center;
@@ -125,21 +162,103 @@ footer p:last-child{
 .backgroundLines{
   position: absolute;
 }
-#hero h1{
+#hero h1, .slideshowText{
   text-align: right;
   grid-column: 1/-1;
-  grid-row: 1;
   align-self: center;
+  justify-self: end;
+}
+#hero h1{
+  grid-row: 1;
+  z-index: 1;
+}
+.slideshowText{
+  height:15em;
+  z-index: 1;
+  grid-row: 2;
+  background-color:rgba(250,250,250, .7);
+  width:60%;
+  padding:2em;
+  animation: fadeInOut .5s;
+}
+.slideshowText p, .slideshowText h3{
+  text-align: right;
 }
 /* slideshow */
 .slideshow{
-grid-columns: 1/4;
+grid-column: 2;
+grid-row: 3;
+z-index: 0;
+text-align: right;
 list-style-type: none;
 }
 .slideshow li{
   display: inline;
 }
-.slideshow img{
-  width:25%;
+.slideshow li img{
+  width:20%;
+}
+.slideshow .mainImg img{
+  left: 0;
+  top: 7vh;
+  position: absolute;
+  width: 60%;
+  animation: fadeInOut .5s;
+}
+@keyframes fadeInOut{
+0%{opacity: 0;}
+  100%{opacity: 1;}
 }
 /*  slideshow ends  */
+
+
+/*****    WHAT IS A REBOZO SECTION  *****/
+
+#whatRebozo p{
+  text-align: left;
+  margin:1em 0;
+}
+
+/*****    WHY USE A REBOZO SECTION  *****/
+
+#whyRebozo{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  margin:auto 10em;
+}
+#whyRebozo h1, #whyRebozo h3{
+  grid-column: 1/-1;
+}
+#whyRebozo h3{
+  margin:2em 0;
+}
+#whyRebozo div{
+  padding:0 2em;
+  text-align: justify;
+}
+#whyRebozo li{
+  margin:.5em 0;
+}
+.practicality{
+  border-right: 4px solid #DDD;
+}
+
+/*****  HOW TO USE A REBOZO      *****/
+
+
+.howToContainer{
+  margin:2.5em 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.howToImgFrame{
+   padding:-8em;
+  background-color:#ddd;
+}
+.howToImgFrame img{
+  transform:translate(1em,-1em);
+}
+#howTo h1{
+  grid-column: 1/-1;
+}
