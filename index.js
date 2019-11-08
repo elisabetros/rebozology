@@ -64,7 +64,8 @@ const slideshowText=[
 
 
 function removeMainclass(){
-  slideshowLi.forEach(slide=>{
+  
+    slideshowLi.forEach(slide=>{
     slide.classList.remove('mainImg');
   })
 }
@@ -73,7 +74,7 @@ function addMainClass(slideClass){
   // .classList.add("mainImg");
 }
 function changeText(slideClass){
-  console.log(slideClass)
+  // console.log(slideClass)
   if (slideClass=="slidePregnancy"){
     slideshowHeader.textContent= slideshowText[0].header;
     slideshowBodytext.textContent= slideshowText[0].text;
@@ -95,7 +96,7 @@ function changeText(slideClass){
     slideshowBodytext.textContent= slideshowText[4].text;
   }
 }
-  let startInterval= setInterval(changeLi, 5000);
+  let startInterval= setInterval(changeLi, 7900);
 
   function changeLi(){
     i++
@@ -117,9 +118,50 @@ function changeText(slideClass){
       changeText(event.target.parentElement.className)
       addMainClass(event.target.parentElement.className);
       i=0;
-      startInterval=setInterval(changeLi, 5000);
+      startInterval=setInterval(changeLi, 8000);
     })
   })
 
 
 // startInterval;
+
+
+//icon scroll animation
+
+const iconWrapper = document.querySelector("#iconsWrapper");
+const howToSection = document.querySelector("#howTo");
+const howToSectionHeight = howToSection.clientHeight;
+let iconsHeight = iconWrapper.clientHeight;
+// iconsHeight+2000;
+
+document.addEventListener('scroll', moveIcons);
+
+// check if element is in view
+function inView() {
+  // get window height
+  var windowHeight = window.innerHeight;
+  // get number of pixels that the document is scrolled
+  var scrollY = window.scrollY || window.pageYOffset;
+  
+  // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+  var scrollPosition = scrollY + windowHeight;
+  // get element position (distance from the top of the page to the bottom of the element)
+  var iconPosition = howToSection.getBoundingClientRect().top + scrollY + iconsHeight;
+  // console.log(iconPosition);
+  // is scroll position greater than element position? (is element in view?)
+  if (scrollPosition > iconPosition) {
+    return true;
+  }
+  
+  return false;
+}
+function moveIcons() {
+  if (inView()) {
+      console.log("animate!")
+      iconWrapper.querySelector("#icons").classList.add('shrinkAndMove');
+  }
+  else{
+    console.log("don't animate");
+    iconWrapper.querySelector("#icons").classList.remove('shrinkAndMove');
+  }
+}

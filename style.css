@@ -9,7 +9,7 @@
 #hero, #testimonials, #whatRebozo{
   max-height:calc(100vh - 80px);
 }
-#hero, #testimonials, #howTo{
+#hero, #testimonials, #howTo,#icons{
   margin:4em 5em;
 }
 #whatRebozo, #whyRebozo{
@@ -19,6 +19,7 @@
 h1, h2, h3{
   text-align: center;
     font-family: 'Limelight', cursive;
+    /* letter-spacing:2px; */
 }
 p, div, span, a{
   font-family: 'Montserrat', sans-serif;
@@ -177,7 +178,7 @@ footer p:last-child{
   z-index: 1;
   grid-row: 2;
   background-color:rgba(250,250,250, .7);
-  width:60%;
+  width:50%;
   padding:2em;
   animation: fadeInOut .5s;
 }
@@ -190,6 +191,7 @@ grid-column: 2;
 grid-row: 3;
 z-index: 0;
 text-align: right;
+align-self: end;
 list-style-type: none;
 }
 .slideshow li{
@@ -197,17 +199,52 @@ list-style-type: none;
 }
 .slideshow li img{
   width:20%;
+  cursor: pointer;
+  /* transition: all .3s;
+  opacity: 0;
+  transform: translateX(-10%);
+  animation: moveIn .3s ease-in-out forwards; */
 }
-.slideshow .mainImg img{
-  left: 0;
-  top: 7vh;
+.slideshow .mainImg{
+  padding:2em;
+  background-color:#ddd;
+  left:0;
+  bottom: 0;
   position: absolute;
   width: 60%;
-  animation: fadeInOut .5s;
+  height:75vh;
+  transition: opacity .3s, transform .3s;
 }
-@keyframes fadeInOut{
-0%{opacity: 0;}
-  100%{opacity: 1;}
+.slideshow .mainImg img{
+  height:100%;
+  width:auto;
+  align-self:center;
+  animation: moveIn 8s ease-in-out forwards;
+}
+
+@keyframes moveIn{
+  0%{
+    opacity: 0;
+    transform: translatex(10%);
+  }
+  1%{
+    opacity: 1;
+    transform: translatex(0);
+  }
+  98%{
+    opacity: 1;
+    transform: translatex(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translatex(-10%);
+  }
+}
+@keyframes moveOut{
+  100% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
 }
 /*  slideshow ends  */
 
@@ -243,7 +280,59 @@ list-style-type: none;
 .practicality{
   border-right: 4px solid #DDD;
 }
+/*****    ICON SECTION  *****/
+#iconWrapper{
+  height:calc(100vh - 70px);
+  transition: all .3s;
+}
+#icons{
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  transition: all .3s;
+ 
+  /* grid-template-rows: .5fr 1fr 1fr; */
+}
+#icons h1{
+  grid-column: 1/-1;
+}
 
+
+.icon img{
+  display: block;
+  margin:auto;
+  padding:7% 10% 6% 6%;
+  width:10vw;
+  clip-path: circle(40%);
+  background-color:#CAE8DC;
+ justify-content: center;
+}
+
+#icons.shrinkAndMove{
+  position:fixed;
+  /* width:200px;
+  right:5vw;
+  transform:translate(300%, -100%);
+  top:100px; */
+  z-index: 10;
+  transition: all .3s,;
+  margin:0;
+  animation: moveToRight .3s forwards ease;
+}
+@keyframes moveToRight{
+  100%{
+    /* top:50px; */
+    /* transform: scale(.); */
+    transform:translate(80vw, 70px);
+  }
+}
+
+.shrinkAndMove img{
+  width:5vw;
+}
+.shrinkAndMove h3, .shrinkAndMove h1{
+  display: none;
+}
 /*****  HOW TO USE A REBOZO      *****/
 
 
