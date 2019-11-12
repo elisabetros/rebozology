@@ -4,12 +4,16 @@
     padding:0;
     box-sizing: border-box;
 }
+body{
+  max-width: 100vw;
+  overflow-x: hidden;
+}
 
 /*****  REUSABLE CSS  *****/
-#hero, #testimonials, #whatRebozo{
+#hero, #testimonials{
   max-height:calc(100vh - 80px);
 }
-#hero, #testimonials, #howTo,#icons{
+#hero, #testimonials, #howTo,#iconsWrapper{
   margin:4em 5em;
 }
 #whatRebozo, #whyRebozo{
@@ -18,10 +22,11 @@
 
 h1, h2, h3{
   text-align: center;
-    font-family: 'Limelight', cursive;
+    font-family: 'Limelight', cursive, 'Arial';
     /* letter-spacing:2px; */
 }
 p, div, span, a{
+  font-size: 14px;
   font-family: 'Montserrat', sans-serif;
   text-align: left;
 }
@@ -32,8 +37,20 @@ img{
 button{
   background-color: #CAE8DC;
 }
+.backgroundLines{
+  background-image: url(pattern.svg);
+  background-size: contain;
+  position: absolute;
+  opacity: .1;
+  bottom:10vh;
+  top:0;
+  left:0;
+  right:-4em;
+  width:150
+}
 /*****   MENU    *****/
 header {
+  background:rgba(250,250,250, .9);
   max-width: 100vw;
   width: 100%;
   position: fixed;
@@ -59,7 +76,7 @@ header {
     text-decoration: none;
   }
  .deskmenu a, .hiddenMenu a{
-     color:#F4DCE3;
+     color:#d09cab;
      font-weight: bold;
  }
 
@@ -153,16 +170,14 @@ footer p:last-child{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: .5fr .5fr .5fr;
-  margin-top:80px;
+  margin-top:100px;
   padding-top:1em;
   position: relative;
   z-index: 1;
   justify-content: center;
   align-content: center;
 }
-.backgroundLines{
-  position: absolute;
-}
+
 #hero h1, .slideshowText{
   text-align: right;
   grid-column: 1/-1;
@@ -250,7 +265,14 @@ list-style-type: none;
 
 
 /*****    WHAT IS A REBOZO SECTION  *****/
-
+#whatRebozo {
+  columns:2;
+  column-rule: 2px solid #F4DCE3;
+}
+#whatRebozo h1{
+  column-span: all;
+  margin-bottom: 1em;
+}
 #whatRebozo p{
   text-align: left;
   margin:1em 0;
@@ -260,35 +282,71 @@ list-style-type: none;
 
 #whyRebozo{
   display:grid;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
   justify-content: center;
-  margin:auto 10em;
+  margin:4em 0;
+  position: relative;
+  /* height:calc(100vh - 70px); */
 }
-#whyRebozo h1, #whyRebozo h3{
+#whyRebozo .backgroundLines{
+  background-repeat: no-repeat;
+  right:0;
+}
+.section{
+  padding:2em 15em 0;
+  margin:0;
+    width:100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+h4{
+  font-size: 1em;
+  text-align: left;
+  margin:0;
+  padding:0;
+}
+.line{
+  margin: .5em 0;
+  height: 0px;
+  width: 50%;
+  border: 1px solid #F4DCE3;
+}
+.during{
+    /* padding-right: 20em; */
+    
+    grid-template-rows:.1fr 1fr;
+}
+.asCarrier{
+  grid-template-columns: repeat(4, 1fr);
+  columns: 2;
+  column-fill:auto;
+}
+
+
+#whyRebozo h1, .subHeader, #whyRebozo h3{
   grid-column: 1/-1;
 }
 #whyRebozo h3{
-  margin:2em 0;
+  font-size: 1.5em;
+  margin:1em 0;
+  grid-row:1;
 }
-#whyRebozo div{
-  padding:0 2em;
-  text-align: justify;
-}
-#whyRebozo li{
-  margin:.5em 0;
-}
-.practicality{
-  border-right: 4px solid #DDD;
+.pro{
+  padding:.5em 1em;
 }
 /*****    ICON SECTION  *****/
-#iconWrapper{
+#iconsWrapper{
   height:calc(100vh - 70px);
   transition: all .3s;
+  /* display: grid; */
+  align-items: center;
+  /* margin:0 5em; */
 }
 #icons{
   display: grid;
-  justify-items: center;
+  /* justify-items: center; */
   grid-template-columns: 1fr 1fr 1fr;
+  /* grid-gap: 1em; */
   transition: all .3s;
  
   /* grid-template-rows: .5fr 1fr 1fr; */
@@ -297,11 +355,13 @@ list-style-type: none;
   grid-column: 1/-1;
 }
 
-
+.icon{
+  margin:1.5em 0;
+}
 .icon img{
   display: block;
   margin:auto;
-  padding:7% 10% 6% 6%;
+  padding:5%;
   width:10vw;
   clip-path: circle(40%);
   background-color:#CAE8DC;
@@ -310,12 +370,11 @@ list-style-type: none;
 
 #icons.shrinkAndMove{
   position:fixed;
+  top:0;
   /* width:200px;
-  right:5vw;
-  transform:translate(300%, -100%);
-  top:100px; */
+  right:5vw; */
   z-index: 10;
-  transition: all .3s,;
+  transition: all .3s;
   margin:0;
   animation: moveToRight .3s forwards ease;
 }
@@ -323,26 +382,39 @@ list-style-type: none;
   100%{
     /* top:50px; */
     /* transform: scale(.); */
-    transform:translate(80vw, 70px);
+    transform:translate(70vw, 70px);
   }
 }
 
 .shrinkAndMove img{
   width:5vw;
+  padding:15%;
 }
 .shrinkAndMove h3, .shrinkAndMove h1{
   display: none;
+}
+
+.highlightedIcon{
+  opacity:1;
+  transform:scale(1.3 );
 }
 /*****  HOW TO USE A REBOZO      *****/
 
 
 .howToContainer{
-  margin:2.5em 0;
+  margin:5em 15em 5em 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+.howToText{
+  margin:2em 2em 2em 3em;
+}
+.howToContainer p{
+  margin:1em 0;
+}
 .howToImgFrame{
-   padding:-8em;
+  margin:auto;
   background-color:#ddd;
 }
 .howToImgFrame img{

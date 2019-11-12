@@ -132,12 +132,24 @@ const iconWrapper = document.querySelector("#iconsWrapper");
 const howToSection = document.querySelector("#howTo");
 const howToSectionHeight = howToSection.clientHeight;
 let iconsHeight = iconWrapper.clientHeight;
+const pregnancyHowTo = document.querySelector(".duringPregnancy");
+const birthHowTo = document.querySelector(".duringBirth");
+const postpartumHowTo = document.querySelector(".postpartum");
+const carrierHowTo = document.querySelector(".babyCarrier");
+const scarfHowTo = document.querySelector(".shawl");
+const otherHowTo = document.querySelector(".other");
+const pregnancyHowToHeight = pregnancyHowTo.clientHeight;
+const birthHowToHeight = birthHowTo.clientHeight;
+const postpartumHowToHeight = postpartumHowTo.clientHeight;
+const carrierHowToHeight =carrierHowTo.clientHeight;
+const scarfHowToHeight =scarfHowTo.clientHeight;
+const otherHowToHeight =otherHowTo.clientHeight;
 // iconsHeight+2000;
 
 document.addEventListener('scroll', moveIcons);
 
 // check if element is in view
-function inView() {
+function inView(section, sectionsHeight) {
   // get window height
   var windowHeight = window.innerHeight;
   // get number of pixels that the document is scrolled
@@ -146,22 +158,70 @@ function inView() {
   // get current scroll position (distance from the top of the page to the bottom of the current viewport)
   var scrollPosition = scrollY + windowHeight;
   // get element position (distance from the top of the page to the bottom of the element)
-  var iconPosition = howToSection.getBoundingClientRect().top + scrollY + iconsHeight;
+  var elementPosition = section.getBoundingClientRect().top + scrollY + sectionsHeight;
   // console.log(iconPosition);
   // is scroll position greater than element position? (is element in view?)
-  if (scrollPosition > iconPosition) {
+  if (scrollPosition > elementPosition) {
     return true;
   }
-  
-  return false;
+    return false;
 }
+
 function moveIcons() {
-  if (inView()) {
+  if (inView(howToSection, iconsHeight)) {
       console.log("animate!")
       iconWrapper.querySelector("#icons").classList.add('shrinkAndMove');
+      checkIfHighlightIcon()
   }
   else{
     console.log("don't animate");
     iconWrapper.querySelector("#icons").classList.remove('shrinkAndMove');
+    removeHighlightStyling()
   }
+}
+function checkIfHighlightIcon(){
+
+  //Highlite relevant icon
+  if (inView(pregnancyHowTo,pregnancyHowToHeight)){
+    // console.log("higlite pregnancy icon")
+    removeHighlightStyling()
+    iconWrapper.querySelector(".iconPregnancy").classList.add("highlightedIcon");
+
+  }
+  if (inView(birthHowTo, birthHowToHeight)){
+    // console.log("higlite birth icon")
+    removeHighlightStyling()
+    iconWrapper.querySelector(".iconBirth").classList.add("highlightedIcon");
+    
+  }
+  if (inView(postpartumHowTo,postpartumHowToHeight)){
+    // console.log("higlite postpartum icon")
+    removeHighlightStyling()
+    iconWrapper.querySelector(".iconPostpartum").classList.add("highlightedIcon");
+    
+  }
+  if (inView(carrierHowTo,carrierHowToHeight)){
+    // console.log("higlite carrier icon")
+    removeHighlightStyling()
+    iconWrapper.querySelector(".iconCarrier").classList.add("highlightedIcon");
+    
+  }
+  if (inView(scarfHowTo,scarfHowToHeight)){
+    removeHighlightStyling()
+    // console.log("higlite scarf icon")
+    iconWrapper.querySelector(".iconShawl").classList.add("highlightedIcon");
+    
+  }
+  if (inView(otherHowTo,otherHowToHeight)){
+    // console.log("higlite other icon")
+    removeHighlightStyling()
+    iconWrapper.querySelector(".iconOther").classList.add("highlightedIcon");
+
+  }
+}
+
+function removeHighlightStyling(){
+  iconWrapper.querySelectorAll(".icon").forEach(icon=>{
+    icon.classList.remove("highlightedIcon")
+  })
 }
