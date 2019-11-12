@@ -13,7 +13,7 @@ body{
 #hero, #testimonials{
   max-height:calc(100vh - 80px);
 }
-#hero, #testimonials, #howTo,#iconsWrapper{
+#hero, #testimonials, #howTo,#iconsWrapper, #aboutFounder{
   margin:4em 5em;
 }
 #whatRebozo, #whyRebozo{
@@ -69,11 +69,15 @@ header {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   font-size: 1.2em;
+  text-align: center;
  }
  a,
   a:visited, a:active{
     color:black;
     text-decoration: none;
+  }
+  .deskmenu a{
+    text-align: center;
   }
  .deskmenu a, .hiddenMenu a{
      color:#d09cab;
@@ -170,7 +174,7 @@ footer p:last-child{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: .5fr .5fr .5fr;
-  margin-top:100px;
+  margin-top:80px;
   padding-top:1em;
   position: relative;
   z-index: 1;
@@ -413,13 +417,33 @@ h4{
 .howToContainer p{
   margin:1em 0;
 }
-.howToImgFrame{
+.imgFrame{
   margin:auto;
   background-color:#ddd;
 }
-.howToImgFrame img{
+.imgFrame img{
   transform:translate(1em,-1em);
 }
 #howTo h1{
   grid-column: 1/-1;
+}
+
+
+/*****    ABOUT THE FOUNDER PAGE    *****/
+#aboutFounder{
+  display: grid;
+  grid-template-columns: .8fr 1fr;
+  /* grid-template-rows: .5fr 1fr 1fr; */
+}
+#aboutFounder h1{
+  grid-column: 1/-1;;
+}
+#aboutFounder .imgFrame{
+  /* grid-row:2/5; */
+  /* grid-column: 1; */
+  margin:2em;
+}
+#aboutFounder p{
+  /* grid-column: 2; */
+  padding:1em;
 }
