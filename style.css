@@ -443,7 +443,24 @@ h4{
   /* grid-column: 1; */
   margin:2em;
 }
+#aboutFounder .first{
+  grid-column: 1/-1;
+  margin: 1em 10em;
+}
 #aboutFounder p{
   /* grid-column: 2; */
   padding:1em;
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  font-size: 15px;
+}
+.quotes{
+  color:#F4DCE3;
+  z-index: -1;
+  font-size: 150px;
+  position: absolute;
+  top:-5vh;
+  left:0;
+  font-family: 'Limelight';
 }
