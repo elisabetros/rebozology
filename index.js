@@ -144,6 +144,8 @@ const postpartumHowToHeight = postpartumHowTo.clientHeight;
 const carrierHowToHeight =carrierHowTo.clientHeight;
 const scarfHowToHeight =scarfHowTo.clientHeight;
 const otherHowToHeight =otherHowTo.clientHeight;
+const testimonialSection = document.querySelector("#testimonials");
+const testimonialsHeight = testimonialSection.clientHeight;
 // iconsHeight+2000;
 
 document.addEventListener('scroll', moveIcons);
@@ -169,12 +171,17 @@ function inView(section, sectionsHeight) {
 
 function moveIcons() {
   if (inView(howToSection, iconsHeight)) {
-      console.log("animate!")
+      // console.log("animate!")
       iconWrapper.querySelector("#icons").classList.add('shrinkAndMove');
       checkIfHighlightIcon()
   }
-  else{
-    console.log("don't animate");
+   else{
+    // console.log("don't animate");
+    iconWrapper.querySelector("#icons").classList.remove('shrinkAndMove');
+    removeHighlightStyling()
+  }
+  if(inView(testimonialSection, testimonialsHeight)){
+    // console.log("remove Icons")
     iconWrapper.querySelector("#icons").classList.remove('shrinkAndMove');
     removeHighlightStyling()
   }

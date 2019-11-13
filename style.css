@@ -10,14 +10,17 @@ body{
 }
 
 /*****  REUSABLE CSS  *****/
-#hero, #testimonials{
-  max-height:calc(100vh - 80px);
+#hero{
+  height:calc(100vh - 80px);
 }
-#hero, #testimonials, #howTo,#iconsWrapper, #aboutFounder{
+#hero, #testimonials, #howTo,#iconsWrapper, #aboutFounder, #testimonials, #professionals{
   margin:4em 5em;
 }
 #whatRebozo, #whyRebozo{
   margin:4em 15em;
+}
+li{
+  list-style-type: none;
 }
 
 h1, h2, h3{
@@ -38,15 +41,14 @@ button{
   background-color: #CAE8DC;
 }
 .backgroundLines{
-  background-image: url(pattern.svg);
-  background-size: contain;
+  background-image: url(images/lines.png);
+  background-size: cover;
   position: absolute;
   opacity: .1;
   bottom:10vh;
-  top:0;
-  left:0;
-  right:-4em;
-  width:150
+  top:25%;
+  left:20%;
+  right:0;
 }
 /*****   MENU    *****/
 header {
@@ -152,6 +154,7 @@ footer{
   background-image: url(images/rebozo_many.jpg);
   background-repeat:no-repeat;
   padding:2em;
+  margin-top: 4em;
   background-size:cover;
 }
 footer div{
@@ -173,10 +176,10 @@ footer p:last-child{
 #hero{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: .5fr .5fr .5fr;
+  grid-template-rows: .1fr .5fr .5fr;
   margin-top:80px;
   padding-top:1em;
-  position: relative;
+  /* position: relative; */
   z-index: 1;
   justify-content: center;
   align-content: center;
@@ -206,39 +209,36 @@ footer p:last-child{
 }
 /* slideshow */
 .slideshow{
-grid-column: 2;
-grid-row: 3;
-z-index: 0;
-text-align: right;
-align-self: end;
-list-style-type: none;
+  z-index: 0;
+  position: relative;
+  grid-row: 1/-1;
+  grid-column: 1;
+}
+.thumbnails{
+  grid-column: 2;
+  grid-row: 3;
+}
+.thumbnails li{
+  display: inline;
+  }
+.thumbnails li img{
+  width:18%;
+  cursor: pointer;
 }
 .slideshow li{
-  display: inline;
-}
-.slideshow li img{
-  width:20%;
-  cursor: pointer;
-  /* transition: all .3s;
-  opacity: 0;
-  transform: translateX(-10%);
-  animation: moveIn .3s ease-in-out forwards; */
-}
-.slideshow .mainImg{
-  padding:2em;
-  background-color:#ddd;
-  left:0;
-  bottom: 0;
   position: absolute;
-  width: 60%;
-  height:75vh;
-  transition: opacity .3s, transform .3s;
+  top:10%;
+  left:0;
+}
+.slideshow img{
+  border:20px solid #eee;
+  visibility: hidden;
+  transition: all .3s;
+  /* transform: translateX(10%); */
 }
 .slideshow .mainImg img{
-  height:100%;
-  width:auto;
-  align-self:center;
-  animation: moveIn 8s ease-in-out forwards;
+  visibility: visible;
+  animation: moveIn .3s ease-in-out forwards;
 }
 
 @keyframes moveIn{
@@ -246,25 +246,12 @@ list-style-type: none;
     opacity: 0;
     transform: translatex(10%);
   }
-  1%{
-    opacity: 1;
-    transform: translatex(0);
-  }
-  98%{
-    opacity: 1;
-    transform: translatex(0);
-  }
   100%{
-    opacity: 0;
-    transform: translatex(-10%);
+    opacity: 1;
+    transform: translatex(0);
   }
 }
-@keyframes moveOut{
-  100% {
-    opacity: 0;
-    transform: translateX(50%);
-  }
-}
+
 /*  slideshow ends  */
 
 
@@ -292,10 +279,7 @@ list-style-type: none;
   position: relative;
   /* height:calc(100vh - 70px); */
 }
-#whyRebozo .backgroundLines{
-  background-repeat: no-repeat;
-  right:0;
-}
+
 .section{
   padding:2em 15em 0;
   margin:0;
@@ -341,9 +325,9 @@ h4{
 /*****    ICON SECTION  *****/
 #iconsWrapper{
   height:calc(100vh - 70px);
-  transition: all .3s;
-  /* display: grid; */
-  align-items: center;
+  /* transition: all .3s; */
+  display: grid;
+  align-content: center;
   /* margin:0 5em; */
 }
 #icons{
@@ -372,14 +356,14 @@ h4{
  justify-content: center;
 }
 
+
 #icons.shrinkAndMove{
   position:fixed;
   top:0;
   /* width:200px;
   right:5vw; */
   z-index: 10;
-  transition: all .3s;
-  margin:0;
+  /* transition: all .3s; */
   animation: moveToRight .3s forwards ease;
 }
 @keyframes moveToRight{
@@ -392,7 +376,7 @@ h4{
 
 .shrinkAndMove img{
   width:5vw;
-  padding:15%;
+  /* padding:15%; */
 }
 .shrinkAndMove h3, .shrinkAndMove h1{
   display: none;
@@ -428,7 +412,60 @@ h4{
   grid-column: 1/-1;
 }
 
+/***** TESTIMONIALS  *****/
 
+.testimonalsWrapper{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+#testimonials h1, #professionals h1{
+  margin:2em 0;
+}
+.singleTestimonial{
+  position: relative;
+  margin: 2em 3em;
+}
+.name{
+  text-transform: uppercase;
+  padding:.5em 1em;
+  margin:1em 0;
+  position: absolute;
+  top:35%;
+  right:-5%;
+  background-color: #CAE8DC;
+}
+.singleTestimonial .quotes{
+  color:#CAE8DC;
+  font-size: 5em;
+  top:55%;
+
+}
+#testimonials img{
+  width: 80%;
+  border-radius: 50%;
+  border:3px solid #CAE8DC;
+  }
+  .testimonialText{
+    margin:2em 1em;
+  }
+  /*  Testimonials professionals  */
+  #testimonials + .line, #professionals + .line{
+    margin:auto;
+    border: 3px solid #eee;
+    width:100px
+  }
+
+  #professionals .singleTestimonial{
+    /* height:10vh; */
+    padding-top:6em;
+  }
+  #professionals .name{
+    top:0;
+  }
+  #professionals .quotes{
+    top:3vh;
+    left:0;
+  }
 /*****    ABOUT THE FOUNDER PAGE    *****/
 #aboutFounder{
   display: grid;
