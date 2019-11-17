@@ -49,6 +49,7 @@ button{
   top:25%;
   left:20%;
   right:0;
+  z-index: -1;
 }
 /*****   MENU    *****/
 header {
@@ -98,22 +99,24 @@ header {
   top: 0;
   left: 0;
   z-index: 10;
-  padding: 10vh 2em 2em;
+  padding:  2em 2em 10vh;
   width: 100vw;
   height: 100vh;
   transition: all 0.3s;
+  background:#fff;
 }
 .menu a {
+  font-size: 1.5em;
+  color:#d09cab;
   display: block;
   padding: 0.5em 0;
-  font-size: 2em;
 }
 
 svg.menuIcon {
     cursor: pointer;
     margin: 1.5em 0;
     /* z-index: 15; */
-    fill: #000;
+    fill: #d09cab;;
     height: 40px;
     width: 40px;
     display: none;
@@ -195,17 +198,24 @@ footer p:last-child{
   grid-row: 1;
   z-index: 1;
 }
-.slideshowText{
-  height:15em;
-  z-index: 1;
-  grid-row: 2;
+
+.slideshowText li{
   background-color:rgba(250,250,250, .7);
-  width:50%;
   padding:2em;
   animation: fadeInOut .5s;
+  height:15em;
+  width:50%;
+  position: absolute;
+  right:5%;
+  top:30%;
+  visibility: hidden;
 }
-.slideshowText p, .slideshowText h3{
+.slideshowText .mainText{
+  visibility: visible;
+}
+.slideshowText p, .slideshowText h3, .slideshowText a{
   text-align: right;
+  margin:3% 0 ;
 }
 /* slideshow */
 .slideshow{
@@ -224,7 +234,14 @@ footer p:last-child{
 .thumbnails li img{
   width:18%;
   cursor: pointer;
+  transition: all .2s;
+  opacity: .7;
 }
+.thumbnails img:hover, .active img{
+  transform:scale(1.1);
+  opacity: 1;
+}
+
 .slideshow li{
   position: absolute;
   top:10%;
@@ -257,8 +274,13 @@ footer p:last-child{
 
 /*****    WHAT IS A REBOZO SECTION  *****/
 #whatRebozo {
+  /* height:calc(100vh - 70px); */
+  margin:10em 5em;
+  align-content: center;
+  align-items: center;
+  align-self: center;
   columns:2;
-  column-rule: 2px solid #F4DCE3;
+  column-rule: 2px solid #CAE8DC;
 }
 #whatRebozo h1{
   column-span: all;
@@ -273,43 +295,48 @@ footer p:last-child{
 
 #whyRebozo{
   display:grid;
-  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: center;
   margin:4em 0;
   position: relative;
   /* height:calc(100vh - 70px); */
 }
-
+#whyRebozo img{
+  display: block;
+  margin: auto;
+width:80%;
+}
 .section{
-  padding:2em 15em 0;
+  padding:2em;
   margin:0;
-    width:100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  width:100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.section p{
+  margin:4% 0;
 }
 h4{
   font-size: 1em;
   text-align: left;
-  margin:0;
-  padding:0;
 }
 .line{
   margin: .5em 0;
   height: 0px;
   width: 50%;
-  border: 1px solid #F4DCE3;
+  border: 1px solid #CAE8DC;
 }
 .during{
     /* padding-right: 20em; */
-    
+    grid-column: 2/-1;
     grid-template-rows:.1fr 1fr;
 }
 .asCarrier{
+  grid-column: 1/4;
   grid-template-columns: repeat(4, 1fr);
   columns: 2;
   column-fill:auto;
 }
-
 
 #whyRebozo h1, .subHeader, #whyRebozo h3{
   grid-column: 1/-1;
@@ -321,6 +348,13 @@ h4{
 }
 .pro{
   padding:.5em 1em;
+}
+.pro h4{
+  height:3em;
+  text-align: center;
+  align-content: center;
+  background:#CAE8DC;
+  padding:2%;
 }
 /*****    ICON SECTION  *****/
 #iconsWrapper{
@@ -403,7 +437,7 @@ h4{
 }
 .imgFrame{
   margin:auto;
-  background-color:#ddd;
+  background-color:#eee;
 }
 .imgFrame img{
   transform:translate(1em,-1em);
@@ -435,7 +469,6 @@ h4{
   background-color: #CAE8DC;
 }
 .singleTestimonial .quotes{
-  color:#CAE8DC;
   font-size: 5em;
   top:55%;
 
@@ -449,7 +482,7 @@ h4{
     margin:2em 1em;
   }
   /*  Testimonials professionals  */
-  #testimonials + .line, #professionals + .line{
+  #testimonials + .line, #professionals + .line, #aboutFounder + .line{
     margin:auto;
     border: 3px solid #eee;
     width:100px
@@ -469,8 +502,14 @@ h4{
 /*****    ABOUT THE FOUNDER PAGE    *****/
 #aboutFounder{
   display: grid;
-  grid-template-columns: .8fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  z-index: 2;
   /* grid-template-rows: .5fr 1fr 1fr; */
+}
+.aboutAdriana{
+  background:rgba(250,250,250, .6);
+  padding:5%;
+  position: relative;
 }
 #aboutFounder h1{
   grid-column: 1/-1;;
@@ -484,8 +523,14 @@ h4{
   grid-column: 1/-1;
   margin: 1em 10em;
 }
+#aboutFounder h2{
+  /* position: absolute; */
+  background:#CAE8DC;
+  padding:1%;
+  width: 60%;
+  margin:auto;
+}
 #aboutFounder p{
-  /* grid-column: 2; */
   padding:1em;
   position: relative;
   z-index: 1;
@@ -493,11 +538,107 @@ h4{
   font-size: 15px;
 }
 .quotes{
-  color:#F4DCE3;
+  color:#CAE8DC;
   z-index: -1;
   font-size: 150px;
   position: absolute;
   top:-5vh;
   left:0;
   font-family: 'Limelight';
+}
+@media only screen and (max-width: 1040) {
+  .testimonalsWrapper{
+    grid-template-columns: 1fr 1fr;
+    margin:4em 10em;
+  }
+}
+@media only screen and (max-width: 7680px) {
+  .deskmenu{
+    display: none;
+  }
+  svg.menuIcon{
+    display: block;
+    justify-self: end;
+  }
+  
+
+  #hero{
+    display: block;
+    /* grid-template-columns: 1fr; */
+    /* height:100vh; */
+  }
+  .slideshow li{
+    width: 100%;
+  }
+  .thumbnails{
+    margin:85% 5em 0;
+  }
+  
+  .slideshowText li{
+    height:20em;
+    padding:1em;
+    top:45%;
+  }
+  .asCarrier{
+    grid-template-columns: repeat(3,1fr);
+  }
+  #iconsWrapper {
+    height:40vh;
+  }
+  .howToContainer{
+    margin:0;
+  }
+  .testimonalsWrapper{
+    grid-template-columns: 1fr 1fr;
+    /* margin:4em 6em; */
+  }
+  #aboutFounder{
+    display: block;
+  }
+}
+@media only screen and (max-width: 450px) {
+  #hero, #testimonials, #howTo,#iconsWrapper, #aboutFounder, #testimonials, #professionals{
+    margin:4em 1em;
+  }
+  #aboutFounder .first{
+    margin:0
+  }
+  .slideshowText li{
+    width:auto;
+    top:55vh;
+    left:5%;
+  }
+  .thumbnails{
+    margin: 30vh 1em 0;
+  }
+
+  #whatRebozo{
+    margin:4em 2em;
+    columns:1;
+  }
+  #whyRebozo img{
+    display: none;
+  }
+  #whyRebozo{
+    display: block
+  }
+  .asCarrier, #icons{
+    grid-template-columns: 1fr 1fr;
+  }
+  #icons img{
+    width:30vw;
+  }
+  #iconsWrapper{
+    height: auto;
+  }
+  .howToContainer{
+   grid-template-columns: 1fr;
+  }
+  .howToContainer .imgFrame {
+    grid-row: 1;
+    width:80%;
+  }
+  .howToText{
+    grid-row:2;
+  }
 }
