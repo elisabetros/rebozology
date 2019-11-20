@@ -1,3 +1,22 @@
+let massagesData = {
+   theToffee: {
+       title:"the Toffee",
+       type:"Massage",
+        whatText:"text about The Toffee",
+        when:["pregnancy", "carrier"],
+        tips:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+   
+    },
+    theOther:{
+        title:"the Other",
+        type:"Massage",
+        whatText:"text about The Other",
+        when:["birth", "pregnancy"],
+        tips:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+}
+
+   
 ///// HOW TO USE A REBOZO MODAL
 
 const modalContainer = document.querySelector(".modal");
@@ -15,8 +34,6 @@ massagesBtns.forEach(massageBtn=>{
     //  console.log(e.target.parentElement.id)
      fillModalWithContent(e.target.parentElement.id);
      modalContainer.style.display="block";
-
-    //  modalContainers
  }
 
  function closeModal(){
@@ -26,5 +43,42 @@ massagesBtns.forEach(massageBtn=>{
 
 
  function fillModalWithContent(id){
-    console.log(id)
- }
+    // console.log(id)
+    let title = modalContainer.querySelector(".title");
+    let type = modalContainer.querySelector(".type");
+    let image = modalContainer.querySelector("img");
+    let whatText = modalContainer.querySelector(".what");
+    let whenWrapper =modalContainer.querySelector(".whenIcons")
+    let tips = modalContainer.querySelector(".tips");
+
+
+
+//delete previous icons
+modalContainer.querySelectorAll(".iconImg").forEach(img=>{
+    img.remove();
+})
+Object.keys(massagesData).forEach((key)=>{
+        console.log(key,id);
+        if(id==key){
+            console.log(massagesData[key].text);
+            title.innerText = massagesData[key].title;
+            whatText.innerText = massagesData[key].whatText;
+            tips.innerText = massagesData[key].tips;
+            
+            //create Icons
+            
+            massagesData[key].when.forEach(whenIcon=>{
+
+                let iconImg = document.createElement("img");
+                iconImg.className="iconImg";
+                iconImg.setAttribute("src", "images/icons/"+ whenIcon + ".svg");
+                whenWrapper.appendChild(iconImg);
+            })
+            
+        }
+    })
+}
+
+ 
+
+

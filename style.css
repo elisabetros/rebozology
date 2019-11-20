@@ -391,19 +391,18 @@ h4{
 .icon{
   margin:1.5em 0;
 }
-.icon img{
-  display: block;
+.icon .iconImg{
+    width:10vw;
+    justify-content: center;
+    display: block;
+  }
+
+.iconImg{
   margin:auto;
   padding:.5em;
-  width:10vw;
-  /* clip-path: circle(40%); */
   border-radius: 50%;
   border:3px solid #CAE8DC;
-  /* background-color:#CAE8DC; */
- justify-content: center;
 }
-
-
 #icons.shrinkAndMove{
   position:fixed;
   top:0;
@@ -594,7 +593,8 @@ h4{
 }
 .modalContent{
   width:80vw;
-  margin:2em auto;
+  /* height:90vh; */
+  margin:5vw auto;
   background:white;
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -602,6 +602,12 @@ h4{
 .modalContent.quotes{
   color:#d09cab;
   /* font-size: */
+}
+.whenWrapper .iconImg{
+display:inline;
+width:7vw;
+padding:.1em;
+margin:0 1em;
 }
 
 
