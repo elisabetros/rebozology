@@ -54,7 +54,7 @@ function removeMainclass(){
   })
 }
 function addMainClass(slideClass){
-  console.log(slideClass);
+  // console.log(slideClass);
   slideshowWrapper.querySelector("."+slideClass).classList.add("mainImg");
   thumbnailsWrapper.querySelector("."+slideClass).classList.add("active");
   slideshowTextWrapper.querySelector("."+slideClass).classList.add("mainText");
@@ -131,6 +131,7 @@ function inView(section, sectionsHeight) {
     return false;
 }
 
+
 function moveIcons() {
   if (inView(howToSection, iconsHeight)) {
       // console.log("animate!")
@@ -148,6 +149,7 @@ function moveIcons() {
     removeHighlightStyling()
   }
 }
+
 function checkIfHighlightIcon(){
 
   //Highlite relevant icon
@@ -194,3 +196,10 @@ function removeHighlightStyling(){
     icon.classList.remove("highlightedIcon")
   })
 }
+
+
+
+
+///// HOW TO USE A REBOZO MODAL
+
+const modalContainer = document.querySelector(".modal")

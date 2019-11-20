@@ -13,7 +13,7 @@ body{
 #hero{
   height:calc(100vh - 80px);
 }
-#hero, #testimonials, #howTo,#iconsWrapper, #aboutFounder, #testimonials, #professionals{
+#hero, #testimonials, #howTo,#iconsWrapper, #aboutFounder, #testimonials, #professionals, #howToPage{
   margin:4em 5em;
 }
 #whatRebozo, #whyRebozo{
@@ -22,10 +22,22 @@ body{
 li{
   list-style-type: none;
 }
+h1{
+  font-size: 2.5em;
+  font-family: 'Limelight', cursive, 'Arial';
+}
+h2{
+  font-size: 2em;
+  font-family: 'Limelight', cursive, 'Arial';
 
+}
+h3{
+  font-size: 1.5em;
+  font-family: 'Montserrat';
+}
 h1, h2, h3{
   text-align: center;
-    font-family: 'Limelight', cursive, 'Arial';
+    
     /* letter-spacing:2px; */
 }
 p, div, span, a{
@@ -76,7 +88,7 @@ header {
  }
  a,
   a:visited, a:active{
-    color:black;
+    color:#d09cab;
     text-decoration: none;
   }
   .deskmenu a{
@@ -96,7 +108,7 @@ header {
   align-items: center;
   text-align: center;
   position: fixed;
-  top: 0;
+  top: 70px;
   left: 0;
   z-index: 10;
   padding:  2em 2em 10vh;
@@ -108,8 +120,7 @@ header {
 .menu a {
   font-size: 1.5em;
   color:#d09cab;
-  display: block;
-  padding: 0.5em 0;
+  cursor: pointer;
 }
 
 svg.menuIcon {
@@ -225,6 +236,7 @@ footer p:last-child{
   grid-column: 1;
 }
 .thumbnails{
+  margin-top:5em; 
   grid-column: 2;
   grid-row: 3;
 }
@@ -338,11 +350,10 @@ h4{
   column-fill:auto;
 }
 
-#whyRebozo h1, .subHeader, #whyRebozo h3{
+#whyRebozo h1, .subHeader, #whyRebozo h2{
   grid-column: 1/-1;
 }
-#whyRebozo h3{
-  font-size: 1.5em;
+#whyRebozo h2{
   margin:1em 0;
   grid-row:1;
 }
@@ -383,10 +394,12 @@ h4{
 .icon img{
   display: block;
   margin:auto;
-  padding:5%;
+  padding:.5em;
   width:10vw;
-  clip-path: circle(40%);
-  background-color:#CAE8DC;
+  /* clip-path: circle(40%); */
+  border-radius: 50%;
+  border:3px solid #CAE8DC;
+  /* background-color:#CAE8DC; */
  justify-content: center;
 }
 
@@ -546,13 +559,59 @@ h4{
   left:0;
   font-family: 'Limelight';
 }
+/*****  HOW TO USA A REBOZO PAGE  *****/
+#howToPage{
+  margin-top:100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#massages{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.massage{
+  border:3px solid #CAE8DC;
+  padding:2em;
+  margin:1em;
+  cursor: pointer;
+}
+.close{
+  cursor:pointer;
+}
+.modal{
+  display:none;
+  position: fixed;
+  overflow-y: scroll;
+  background:rgba(0,0,0,.7);
+  width:100vw;
+  height:100vh;
+  top:0;
+  bottom:0;
+  z-index:100;
+}
+.modal.show{
+  display: block;
+}
+.modalContent{
+  width:80vw;
+  margin:2em auto;
+  background:white;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+.modalContent.quotes{
+  color:#d09cab;
+  /* font-size: */
+}
+
+
 @media only screen and (max-width: 1040) {
   .testimonalsWrapper{
     grid-template-columns: 1fr 1fr;
     margin:4em 10em;
   }
 }
-@media only screen and (max-width: 7680px) {
+@media only screen and (max-width: 768px) {
   .deskmenu{
     display: none;
   }
@@ -561,7 +620,9 @@ h4{
     justify-self: end;
   }
   
-
+  footer div{
+    width:60vw
+  }
   #hero{
     display: block;
     /* grid-template-columns: 1fr; */
@@ -586,7 +647,7 @@ h4{
     height:40vh;
   }
   .howToContainer{
-    margin:0;
+    margin:3em 0;
   }
   .testimonalsWrapper{
     grid-template-columns: 1fr 1fr;
@@ -599,6 +660,15 @@ h4{
 @media only screen and (max-width: 450px) {
   #hero, #testimonials, #howTo,#iconsWrapper, #aboutFounder, #testimonials, #professionals{
     margin:4em 1em;
+  }
+  h1{
+    font-size: 1.5em;
+  }
+  h2{
+    font-size: 1.3em;
+  }
+  h3{
+    font-size: 1em;
   }
   #aboutFounder .first{
     margin:0
@@ -622,11 +692,25 @@ h4{
   #whyRebozo{
     display: block
   }
-  .asCarrier, #icons{
+  .during{
+    display: block;
+  }
+  .asCarrier{
+    grid-template-columns: 1fr;
+  }
+  #icons{
     grid-template-columns: 1fr 1fr;
   }
-  #icons img{
+  .icon img{
     width:30vw;
+  }
+  #icons.shrinkAndMove{
+    position: inherit;
+    /* width:200px;
+    right:5vw; */
+    z-index: 10;
+    /* transition: all .3s; */
+    animation:none;
   }
   #iconsWrapper{
     height: auto;
@@ -640,5 +724,22 @@ h4{
   }
   .howToText{
     grid-row:2;
+  }
+  .icon{
+    opacity: .8;
+  }
+  .shrinkAndMove  img{
+    width:20vw;
+  }
+  @keyframes moveToRight{
+    100%{
+      transform:translate(55vw, 70px);
+    }
+  }
+  .testimonalsWrapper{
+    display: block;
+  }
+  footer div{
+    width:80vw
   }
 }
