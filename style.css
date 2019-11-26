@@ -13,10 +13,17 @@ body{
 #hero{
   height:calc(100vh - 80px);
 }
-#hero, #testimonials, #howTo,#iconsWrapper, #aboutFounder, #testimonials, #professionals, #howToPage{
+#hero, #testimonials, 
+#howTo,
+#iconsWrapper, 
+#aboutFounder, 
+#testimonials, 
+#professionals,
+#howToPage,
+#whyRebozo{
   margin:4em 5em;
 }
-#whatRebozo, #whyRebozo{
+#whatRebozo{
   margin:4em 15em;
 }
 li{
@@ -309,7 +316,6 @@ footer p:last-child{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: center;
-  margin:4em 0;
   position: relative;
   /* height:calc(100vh - 70px); */
 }
@@ -319,7 +325,7 @@ footer p:last-child{
 width:80%;
 }
 .section{
-  padding:2em;
+  padding:2em 0;
   margin:0;
   width:100%;
   display: grid;
@@ -391,13 +397,10 @@ h4{
 .icon{
   margin:1.5em 0;
 }
-.icon .iconImg{
+.iconImg{
     width:10vw;
     justify-content: center;
     display: block;
-  }
-
-.iconImg{
   margin:auto;
   padding:.5em;
   border-radius: 50%;
@@ -420,8 +423,9 @@ h4{
   }
 }
 
-.shrinkAndMove img{
-  width:5vw;
+.shrinkAndMove .iconImg{
+  width:6vw;
+  margin:.4vw;
   /* padding:15%; */
 }
 .shrinkAndMove h3, .shrinkAndMove h1{
@@ -599,15 +603,60 @@ h4{
   display:grid;
   grid-template-columns: 1fr 1fr;
 }
-.modalContent.quotes{
+
+.modalContent .quotes{
   color:#d09cab;
-  /* font-size: */
+  top:10vh;
+  left:10vw;
+  z-index: 100;
+}
+.type{
+  background-color:#d09cab;
+  position:absolute;
+  color:white;
+  padding:.5em;
+  top:30vh;
+  left:60vw;
+  font-size: 1.1em;
+}
+.modalLine{
+  width:80vw;
+  left:9.5vw;
+  border:2px solid #d09cab;
+  z-index: 0;
+  position:absolute;
+  top:33vh;
+}
+.modalContent h1{
+  padding:2em 0 0;
+}
+.massagesImg, h1{
+  grid-column:1/-1;
+}
+.massagesImg{
+  width:50%;
+  margin:1em;
+  margin:auto;
+}
+.modalContent p{
+  margin:2em 0;
+}
+.tipsWrapper{
+  background-color: #CAE8DC;
+  grid-row: 4/7;
+  grid-column: 2;
+}
+.tipsWrapper, .whenWrapper, .whatWrapper{
+  padding:2em ;
+}
+.whenWrapper{
+  justify-self: center;
 }
 .whenWrapper .iconImg{
 display:inline;
 width:7vw;
 padding:.1em;
-margin:0 1em;
+margin:1em;
 }
 
 
