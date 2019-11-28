@@ -581,59 +581,57 @@ h4{
 .close{
   cursor:pointer;
 }
-.modal{
-  display:none;
-  position: fixed;
-  overflow-y: scroll;
-  background:rgba(0,0,0,.7);
-  width:100vw;
-  height:100vh;
-  top:0;
-  bottom:0;
-  z-index:100;
-}
-.modal.show{
-  display: block;
-}
-.modalContent{
-  width:80vw;
+
+
+.tutorial{
   /* height:90vh; */
-  margin:5vw auto;
-  background:white;
+  margin:100px 5em;
   display:grid;
   grid-template-columns: 1fr 1fr;
 }
 
-.modalContent .quotes{
-  color:#d09cab;
-  top:10vh;
-  left:10vw;
-  z-index: 100;
+.tutorial .quotes{
+  color:rgba(208,156,171,.3);
+  top: 15vh;
+  left: 38vw;
 }
 .type{
-  background-color:#d09cab;
+  background-color:#ecd7dd;
   position:absolute;
   color:white;
   padding:.5em;
-  top:30vh;
-  left:60vw;
+  top: 33vh;
+  left: 56vw;
   font-size: 1.1em;
 }
-.modalLine{
+.tag{
+  color: #ecd7dd;
+  transform: rotate(270deg);
+  font-size: 2em;
+  position: absolute;
+  right: 0;
+  top: 23vh;
+}
+.titleLine{
   width:80vw;
   left:9.5vw;
-  border:2px solid #d09cab;
+  border:1px solid rgba(208,156,171,.3);
   z-index: 0;
   position:absolute;
-  top:33vh;
+  top:35.5vh;
 }
-.modalContent h1{
-  padding:2em 0 0;
+.tutorial h1{
+  font-size: 3em;
+  padding:1em 0 0;
 }
 .massagesImg, h1{
   grid-column:1/-1;
 }
 .massagesImg{
+  width:50%;
+  margin:2em auto;
+}
+.tutorial.iconImg{
   width:50%;
   margin:1em;
   margin:auto;

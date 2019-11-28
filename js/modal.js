@@ -50,7 +50,7 @@ massagesBtns.forEach(massageBtn=>{
     let type = modalContainer.querySelector(".type");
     let massageImage = modalContainer.querySelector(".massagesImg");
     let whatText = modalContainer.querySelector(".what");
-    let whenWrapper =modalContainer.querySelector(".whenIcons")
+    let whenWrapper = modalContainer.querySelector(".whenIcons")
     let tips = modalContainer.querySelector(".tips");
 
 
