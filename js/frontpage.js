@@ -172,6 +172,6 @@ function removeHighlightStyling(){
 
 
 
-///// HOW TO USE A REBOZO MODAL
+/////   HOW TO USE A REBOZO SLIDESHOWS
 
-const modalContainer = document.querySelector(".modal")
+

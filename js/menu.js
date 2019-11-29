@@ -27,3 +27,13 @@ let toggleMenu = () => {
 };
 
 //MENU ends
+
+
+//back buttons
+
+let backBtn = document.querySelector(".backBtn");
+backBtn.addEventListener("click", goBack);
+
+function goBack(){
+  window.history.back();
+}
