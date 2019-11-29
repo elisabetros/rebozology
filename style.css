@@ -99,7 +99,7 @@ header {
   top: 0;
   text-align: right;
   display: grid;
-  grid-template-columns: .1fr .5fr 2fr;
+  grid-template-columns: .2fr .5fr 3.5fr;
   height:70px;
   justify-content: center;
   align-items: center;
@@ -126,10 +126,13 @@ header {
 .imgLogo{
   width:80%;
   opacity: .7;
+  cursor: pointer;
 }
- .logo{
+.logo{
+  cursor: pointer;
    text-align: left;
    font-weight: bold;
+   font-size: 1.1em;
  }
  .menu {
   display: grid;
@@ -316,7 +319,7 @@ footer p:last-child{
 /*****    WHAT IS A REBOZO SECTION  *****/
 #whatRebozo {
   /* height:calc(100vh - 70px); */
-  margin:10em 5em;
+  margin:10em;
   align-content: center;
   align-items: center;
   align-self: center;
