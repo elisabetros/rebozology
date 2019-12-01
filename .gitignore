@@ -1,4 +1,6 @@
-birth_icon.ai
-rebozo.xd
-pattern.ai
+*.ai
+*.xd
 contact.php
+src/
+images/
+images-big/
