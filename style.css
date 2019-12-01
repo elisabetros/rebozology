@@ -772,6 +772,9 @@ textarea:invalid:not(:focus) ~ .requirements,
   max-height: 200px;
   /* padding:3px 10px 10px 30px; */
 }
+button:disabled, .button:disabled{
+  background:#bfc1c1 !important;
+}
 @media only screen and (max-width: 1040) {
   .testimonalsWrapper{
     grid-template-columns: 1fr 1fr;
