@@ -1,3 +1,4 @@
+"use strict";
 /////     MENU
 
 let menuOpen = false;
@@ -6,18 +7,19 @@ const menu = document.querySelector(".menu");
 const bars = menuIcon.querySelectorAll("rect");
 let menuLinks = document.querySelectorAll(".menu>nav>a");
 const header = document.querySelector("header");
-menuIcon.addEventListener("click", () => {
+menuIcon.addEventListener("click", function(){
   // console.log("menu clicked")
   toggleMenu();
 });
-menuLinks.forEach(link => {
-  link.addEventListener("click", () => {
+for(let i = 0; i< menuLinks.length; i++){
+  menuLinks[i].addEventListener("click", function() {
     toggleMenu;
-  });
-});
+  } )
+}
+
 // Link clicked menu closed
 
-let toggleMenu = () => {
+let toggleMenu = function() {
   // console.log("oopen");
   menuOpen = !menuOpen;
   bars[0].classList.toggle("rotateDown");
@@ -28,12 +30,3 @@ let toggleMenu = () => {
 
 //MENU ends
 
-
-//back buttons
-
-let backBtn = document.querySelector(".backBtn");
-backBtn.addEventListener("click", goBack);
-
-function goBack(){
-  window.history.back();
-}

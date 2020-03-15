@@ -4,3 +4,12 @@ contact.php
 src/
 images/
 images-big/
+api/
+stories.php
+storiesImg/
+*.png
+*test.php
+*test.html
+*.xml
+*.ico
+*.svg

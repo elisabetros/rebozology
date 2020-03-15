@@ -1,6 +1,7 @@
 
 
-
+"use strict";
+window.addEventListener("load", init)
 
 
 ////////    SLIDESHOW
@@ -8,59 +9,46 @@
  const slideshowLi = document.querySelectorAll(".slideshow li");
  const slideshowWrapper = document.querySelector(".slideshow");
  const thumbnailsLi = document.querySelectorAll(".thumbnails li");
- const thumbnailsWrapper = document.querySelector(".thumbnails")
+ const thumbnailsWrapper = document.querySelector(".thumbnails");
  const slideshowText =document.querySelectorAll(".slideshowText li");
  const slideshowTextWrapper = document.querySelector(".slideshowText");
- let i=0;
-
+ let n=0;
 
 function removeMainclass(){
-      slideshowLi.forEach(slide=>{
-    slide.classList.remove('mainImg');
-  })
-  slideshowText.forEach(textWrapper=>{
-    textWrapper.classList.remove('mainText');
-  })
-  thumbnailsLi.forEach(thumbnail=>{
-    thumbnail.classList.remove('active');
-  })
+  document.querySelector(".mainImg").classList.remove("mainImg");
+  document.querySelector(".mainText").classList.remove("mainText");
+  thumbnailsWrapper.querySelector(".active").classList.remove("active");
 }
+
 function addMainClass(slideClass){
-  // console.log(slideClass);
   slideshowWrapper.querySelector("."+slideClass).classList.add("mainImg");
   thumbnailsWrapper.querySelector("."+slideClass).classList.add("active");
   slideshowTextWrapper.querySelector("."+slideClass).classList.add("mainText");
+}
+
+
+
+function changeLi(){
+  n++
+  if (n>=slideshowLi.length){
+     n=0;
   }
-
-  let startInterval= setInterval(changeLi, 7900);
-
-  function changeLi(){
-    i++
-   if (i>=slideshowLi.length){
-     i=0;
-   }
    // console.log(i)
-   removeMainclass();
-   addMainClass(slideshowLi[i].className);
-   }
+  removeMainclass();
+  addMainClass(slideshowLi[n].className);
+}
 
 
-  thumbnailsLi.forEach(thumbnail=>{
-    thumbnail.addEventListener("click", function(){
-      console.log(event.target.parentElement)
-      clearInterval(startInterval);
-      removeMainclass();  
-      addMainClass(event.target.parentElement.className);
-      i=0;
-      startInterval=setInterval(changeLi, 8000);
-    })
-  })
+function changeActiveThumbnail(thumbnailClass){
+  // console.log(event.target.parentElement)
+  clearInterval(startInterval);
+  removeMainclass();  
+  addMainClass(thumbnailClass);
+  // n=i;
+  startInterval=setInterval(changeLi, 20000);
+}
 
-
-// startInterval;
-
-
-//icon scroll animation
+//  SCROLLING ANIMATIONS
 
 const iconWrapper = document.querySelector("#iconsWrapper");
 const howToSection = document.querySelector("#howTo");
@@ -78,15 +66,14 @@ const postpartumHowToHeight = postpartumHowTo.clientHeight;
 const carrierHowToHeight =carrierHowTo.clientHeight;
 const scarfHowToHeight =scarfHowTo.clientHeight;
 const otherHowToHeight =otherHowTo.clientHeight;
-const testimonialSection = document.querySelector("#testimonials");
-const testimonialsHeight = testimonialSection.clientHeight;
-// iconsHeight+2000;
+const benefits = document.querySelector("#benefitsRebozo");
+const benefitsHeight = benefits.clientHeight;
 
-document.addEventListener('scroll', moveIcons);
+
 
 // check if element is in view
 function inView(section, sectionsHeight) {
-  // get window height
+   // get window height
   var windowHeight = window.innerHeight;
   // get number of pixels that the document is scrolled
   var scrollY = window.scrollY || window.pageYOffset;
@@ -105,73 +92,238 @@ function inView(section, sectionsHeight) {
 
 
 function moveIcons() {
-  if (inView(howToSection, iconsHeight)) {
+  if (inView(howToSection, pregnancyHowToHeight)) {
       // console.log("animate!")
-      iconWrapper.querySelector("#icons").classList.add('shrinkAndMove');
-      checkIfHighlightIcon()
+      iconWrapper.querySelector("#icons").classList.add("shrinkAndMove");
+      // changeLinks();
+      checkIfHighlightIcon();
+      moveSvgBox();
   }
    else{
-    // console.log("don't animate");
-    iconWrapper.querySelector("#icons").classList.remove('shrinkAndMove');
-    removeHighlightStyling()
+    // console.log("don"t animate");
+    iconWrapper.querySelector("#icons").classList.remove("shrinkAndMove");
+    removeHighlightStyling();
+    // changeLinksBack();
+    removeSvgBox();
   }
-  if(inView(testimonialSection, testimonialsHeight)){
+  if(inView(benefits, benefitsHeight )){
     // console.log("remove Icons")
-    iconWrapper.querySelector("#icons").classList.remove('shrinkAndMove');
-    removeHighlightStyling()
+    iconWrapper.querySelector("#icons").classList.remove("shrinkAndMove");
+    removeHighlightStyling();
+    // changeLinksBack();
+  }
+  if(inView(otherHowTo, otherHowToHeight)){
+    removeSvgBox();
   }
 }
 
 function checkIfHighlightIcon(){
-
   //Highlite relevant icon
   if (inView(pregnancyHowTo,pregnancyHowToHeight)){
     // console.log("higlite pregnancy icon")
-    removeHighlightStyling()
-    iconWrapper.querySelector(".iconPregnancy").classList.add("highlightedIcon");
+    removeHighlightStyling();
+    iconWrapper.querySelector(".icon-Pregnancy").classList.add("highlightedIcon");
 
   }
   if (inView(birthHowTo, birthHowToHeight)){
     // console.log("higlite birth icon")
-    removeHighlightStyling()
-    iconWrapper.querySelector(".iconBirth").classList.add("highlightedIcon");
+    removeHighlightStyling();
+    iconWrapper.querySelector(".icon-Birth").classList.add("highlightedIcon");
     
   }
   if (inView(postpartumHowTo,postpartumHowToHeight)){
     // console.log("higlite postpartum icon")
-    removeHighlightStyling()
-    iconWrapper.querySelector(".iconPostpartum").classList.add("highlightedIcon");
+    removeHighlightStyling();
+    iconWrapper.querySelector(".icon-Postpartum").classList.add("highlightedIcon");
     
   }
   if (inView(carrierHowTo,carrierHowToHeight)){
     // console.log("higlite carrier icon")
-    removeHighlightStyling()
-    iconWrapper.querySelector(".iconCarrier").classList.add("highlightedIcon");
+    removeHighlightStyling();
+    iconWrapper.querySelector(".icon-Carrier").classList.add("highlightedIcon");
     
   }
   if (inView(scarfHowTo,scarfHowToHeight)){
-    removeHighlightStyling()
+    removeHighlightStyling();
     // console.log("higlite scarf icon")
-    iconWrapper.querySelector(".iconShawl").classList.add("highlightedIcon");
+    iconWrapper.querySelector(".icon-Shawl").classList.add("highlightedIcon");
     
   }
   if (inView(otherHowTo,otherHowToHeight)){
     // console.log("higlite other icon")
     removeHighlightStyling()
-    iconWrapper.querySelector(".iconOther").classList.add("highlightedIcon");
+    iconWrapper.querySelector(".icon-Other").classList.add("highlightedIcon");
 
   }
 }
 
 function removeHighlightStyling(){
-  iconWrapper.querySelectorAll(".icon").forEach(icon=>{
-    icon.classList.remove("highlightedIcon")
+  let icons = iconWrapper.querySelectorAll(".icon")
+  for(let i = 0; i<icons.length;i++){
+    icons[i].classList.remove("highlightedIcon");
+  }
+  iconWrapper.querySelectorAll(".icon").forEach(function(icon){
   })
 }
-
-
 
 
 /////   HOW TO USE A REBOZO SLIDESHOWS
 
 
+const howToImagesParents = document.querySelectorAll(".imgFrame");
+let nextBtns = document.querySelectorAll(".howToNext")
+let prevBtns = document.querySelectorAll(".howToPrevius")
+
+function makeArray(imgArray){
+  console.log(imgArray)
+  var temp_array = [];
+  let length = imgArray.length;
+
+for (var i = 0; i < length; i++) {
+    temp_array.push(imgArray[i]);
+
+}
+return temp_array
+}
+
+
+function moveSlide(direction) {
+  let imgParent = event.target.parentElement;
+  let imgArray = imgParent.querySelectorAll('img')
+  // let allImgs = Array.from(imgParent.querySelectorAll('img'))
+  let allImgs = makeArray(imgArray);
+  // console.log(allImgs)
+  let indexOfActive = allImgs.indexOf(imgParent.querySelector('.visible'))
+  let showImg = allImgs[indexOfActive+direction]
+  clearClass(imgParent)
+  if(showImg === undefined){
+    if(direction ===-1){
+      showImg = allImgs[allImgs.length -1]
+    }else{
+      showImg = allImgs[0]
+    }
+  }
+  showImg.classList.add('visible')
+}    
+
+
+function initHowtoSlideshow(parent){
+  let x = 0;
+  if(parent.childElementCount>1){
+    // console.log(parent.childElementCount)
+    setInterval(function(){
+      x++
+      // console.log(n)
+      if(x+2>=parent.childElementCount){
+        x=0;
+      }
+      clearClass(parent);
+      parent.querySelectorAll("img")[x].classList.add("visible");
+      
+    },6000)
+  }
+}
+
+
+
+function clearClass(parent){
+  let img = parent.querySelectorAll("img");
+  for(let i = 0; i< img.length; i++){
+    img[i].classList.remove("visible");
+
+  }
+}
+
+
+
+
+//// PIE CHART
+
+const pieChartElms = document.querySelectorAll(".circle h4");
+const pieSvgs = document.querySelectorAll(".pie");
+function changePiePart(piePartClass){
+  // console.log(piePartClass)
+  removeClickedStyle();
+  document.querySelector(".pie." + piePartClass).classList.add("clicked")
+  document.querySelector("h4." + piePartClass).classList.add("clicked")
+  addHideClass()
+  document.querySelector(".text-"+piePartClass).classList.remove("hide");
+  
+}
+
+function removeClickedStyle(){
+  for(let i = 0; i<pieSvgs.length; i++){
+    pieSvgs[i].classList.remove("clicked");
+  }
+  for(let i = 0; i<pieChartElms.length; i++){
+    pieChartElms[i].classList.remove("clicked");
+  }
+}
+function addHideClass(){
+  let divs = document.querySelectorAll(".whyUsText>div");
+  for(let i = 0; i< divs.length; i++){
+    divs[i].classList.add("hide");
+
+  }
+}
+
+
+
+////////    SVG HIDE BOX ANIMATION
+
+let hideDiv = document.querySelector("#hideSvgDiv");
+
+function removeSvgBox(){
+  hideDiv.style.display = "none";
+}
+function moveSvgBox(){
+  hideDiv.style.display = "block";
+}
+
+
+
+
+
+let startInterval= setInterval(changeLi, 20000);
+
+function init(){
+  // console.log("init")
+  //click eventlisteners
+  for(let i= 0; i< nextBtns.length; i++){
+    nextBtns[i].addEventListener("click", function(){
+      moveSlide(1)
+    })
+  }
+  for(let i= 0; i< prevBtns.length; i++){
+    prevBtns[i].addEventListener("click", function(){
+      moveSlide(-1)
+    })
+  }
+      //pie chart
+  for(let i = 0; i<pieChartElms.length;i++){
+    pieChartElms[i].addEventListener("click", function(){
+      let piePartClass= event.target.className;
+      changePiePart(piePartClass)
+    });
+  }
+      // hero slideshow thumbnails
+  for(let i = 0; i<thumbnailsLi.length; i++){
+    thumbnailsLi[i].addEventListener("click", function(){
+      let targetClassName =event.target.parentElement.className
+      if(targetClassName.indexOf("active") !== -1){
+        return;
+      //  targetClassName = targetClassName.slice(0,targetClassName.search(" "))
+      }
+    changeActiveThumbnail(targetClassName)
+    })
+  }
+  // slideshows
+  
+  howToImagesParents.forEach(function(parent){
+    // console.log("start")
+    initHowtoSlideshow(parent)
+   })
+
+  //scroll eventlisteners
+  document.addEventListener("scroll", moveIcons);
+}
